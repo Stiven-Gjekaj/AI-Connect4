@@ -179,14 +179,11 @@ select {
   position: fixed; right: 14px; bottom: 12px;
   font-weight: 900; letter-spacing: 0.4px;
   font-size: clamp(12px, 2.2vw, 18px);
-  color: transparent; /* outline only */
-  -webkit-text-stroke: 2px var(--deep);
-  /* subtle theme glow for non-webkit/extra flair */
-  text-shadow:
-    1px 1px 0 rgba(199, 179, 255, 0.35),
-    -1px 1px 0 rgba(199, 179, 255, 0.35),
-    1px -1px 0 rgba(199, 179, 255, 0.35),
-    -1px -1px 0 rgba(199, 179, 255, 0.35);
+  color: #ffffff; /* readable fill */
+  -webkit-text-fill-color: #ffffff; /* ensure fill on webkit */
+  -webkit-text-stroke: 1px var(--deep); /* thinner outline */
+  /* subtle theme glow */
+  text-shadow: 0 0 6px rgba(199, 179, 255, 0.25);
   pointer-events: none; user-select: none; z-index: 5;
 }
 
