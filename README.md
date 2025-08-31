@@ -41,7 +41,3 @@ Minimax stops at a fixed depth per difficulty and uses alpha-beta pruning. Move 
 - Controls have ARIA labels.
 - Status region uses `aria-live` for turn and AI updates.
 - Keyboard input: number keys 1–7 drop a piece in that column.
-
-## License
-
-This project is provided as-is for educational use.
