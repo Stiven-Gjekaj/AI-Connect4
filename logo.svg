@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" aria-hidden="true">
+  <defs>
+    <radialGradient id="rimGrad" cx="50%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9"/>
+      <stop offset="45%" stop-color="#ffffff" stop-opacity="0.0"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0.25"/>
+    </radialGradient>
+    <linearGradient id="ring" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="#b8c7ff" stop-opacity="0.45"/>
+    </linearGradient>
+    <clipPath id="circleClip">
+      <circle cx="64" cy="64" r="46"/>
+    </clipPath>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#0b0f2a" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+
+  <!-- Outer ring -->
+  <circle cx="64" cy="64" r="54" fill="url(#ring)" />
+  <circle cx="64" cy="64" r="50" fill="#f1f4ff" />
+
+  <!-- Token body (clipped circle) -->
+  <g clip-path="url(#circleClip)" filter="url(#softShadow)">
+    <!-- Right half: blue -->
+    <rect x="64" y="18" width="46" height="92" fill="#2f78ff"/>
+    <!-- Left half: red -->
+    <rect x="18" y="18" width="46" height="92" fill="#ff3b47"/>
+
+    <!-- Gloss highlight -->
+    <ellipse cx="50" cy="46" rx="34" ry="20" fill="#ffffff" opacity="0.35"/>
+    <ellipse cx="48" cy="44" rx="26" ry="14" fill="#ffffff" opacity="0.4"/>
+
+    <!-- Inner shading -->
+    <rect x="18" y="18" width="92" height="92" fill="url(#rimGrad)"/>
+  </g>
+
+  <!-- Rim line -->
+  <circle cx="64" cy="64" r="46" fill="none" stroke="#dfe6ff" stroke-width="2"/>
+</svg>
+

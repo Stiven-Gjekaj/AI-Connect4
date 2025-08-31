@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AI Connect 4</title>
+    <link rel="icon" type="image/svg+xml" href="logo.svg" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <img src="logo.svg" alt="Connect 4 logo" class="logo" />
+      <h1>AI Connect 4</h1>
+    </header>
+
+    <main class="container">
+      <section class="controls" aria-label="Game controls">
+        <div class="control-row">
+          <button id="newGameBtn" class="btn primary" aria-label="Start new game">New Game</button>
+          <button id="undoBtn" class="btn" aria-label="Undo last pair of moves">Undo</button>
+          <button id="hintBtn" class="btn" aria-label="Hint best move for player">Hint</button>
+        </div>
+        <div class="control-row">
+          <label class="switch" title="Toggle who plays first">
+            <input type="checkbox" id="aiFirstToggle" aria-label="AI goes first" />
+            <span>AI first</span>
+          </label>
+
+          <label for="difficulty" class="select-label">Difficulty</label>
+          <select id="difficulty" aria-label="Select AI difficulty">
+            <option value="3">Easy (3)</option>
+            <option value="5" selected>Medium (5)</option>
+            <option value="7">Hard (7)</option>
+          </select>
+        </div>
+      </section>
+
+      <section id="status" class="status" role="status" aria-live="polite">Ready. Press 1–7 or click a column.</section>
+
+      <section class="board-wrap">
+        <div id="topGhostRow" class="top-ghost-row" aria-hidden="true"></div>
+        <div id="board" class="board" role="application" aria-label="Connect 4 board"></div>
+      </section>
+
+      <div id="overlay" class="overlay" aria-hidden="true">
+        <div class="overlay-card" role="dialog" aria-modal="true" aria-labelledby="overlayMessage">
+          <p id="overlayMessage" class="overlay-message">&nbsp;</p>
+          <button id="overlayResetBtn" class="btn primary" aria-label="Play again">Play Again</button>
+        </div>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <small>Click columns or press keys 1–7. Player is red, AI is blue.</small>
+    </footer>
+
+    <script src="utils.js"></script>
+    <script src="ai.js"></script>
+    <script src="game.js"></script>
+  </body>
+  </html>
+
