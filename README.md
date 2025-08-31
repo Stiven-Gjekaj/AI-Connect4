@@ -1,4 +1,4 @@
-# AI Connect 4 (Vanilla HTML/CSS/JS)
+# AI Connect 4
 
 A responsive, animated Connect 4 web game with an AI opponent using minimax + alpha-beta pruning. Pure HTML, CSS, and vanilla JavaScript — no frameworks, no build tools.
 
@@ -13,30 +13,6 @@ A responsive, animated Connect 4 web game with an AI opponent using minimax + al
 - Hint: highlights the best column for the player.
 - End states: overlay with You win / AI wins / Draw; disables moves until restart.
 - Theme: cartoony palette, glossy discs, board shadows, responsive layout.
-
-## Run Locally
-
-Just open `index.html` in your browser.
-
-On macOS/Linux:
-
-```
-open index.html
-```
-
-On Windows:
-
-```
-start index.html
-```
-
-No server is required.
-
-## Deploy to GitHub Pages
-
-1. Push this `AI-Connect4` folder as a GitHub repository (e.g., as the repo root).
-2. In the repository Settings → Pages, choose the branch (e.g., `main`) and set the folder/source to the root `/`.
-3. Save. GitHub Pages will publish `index.html` at `https://<username>.github.io/<repo>/`.
 
 ## Technical Notes
 
