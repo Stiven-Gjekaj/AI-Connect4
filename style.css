@@ -27,6 +27,8 @@ body {
               radial-gradient(1200px 800px at 110% -20%, var(--mint) 0%, transparent 40%),
               var(--bg);
   color: var(--text);
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .site-header {
@@ -93,6 +95,7 @@ select {
   background: linear-gradient(180deg, var(--deep), var(--deep-2));
   box-shadow: var(--shadow);
   position: relative;
+  touch-action: manipulation;
 }
 
 .column { display: grid; grid-template-rows: repeat(6, 1fr); gap: 10px; cursor: pointer; }
@@ -178,7 +181,7 @@ select {
 .credits {
   position: fixed; right: 14px; bottom: 12px;
   font-weight: 900; letter-spacing: 0.4px;
-  font-size: clamp(12px, 2.2vw, 18px);
+  font-size: clamp(11px, 2vw, 16px);
   color: #ffffff; /* readable fill */
   -webkit-text-fill-color: #ffffff; /* ensure fill on webkit */
   -webkit-text-stroke: 1px var(--deep); /* thinner outline */
@@ -192,3 +195,34 @@ select {
   .cell { min-height: 42px; }
   .top-ghost-row { height: 40px; }
 }
+
+/* Narrow phones: improve layout and tap targets */
+@media (max-width: 420px) {
+  .controls { padding: 10px 10px; }
+  .control-row { gap: 8px; }
+  .btn { padding: 12px 16px; font-size: 0.98rem; }
+  .switch input { width: 20px; height: 20px; }
+  .select-label { margin-left: 0; }
+  select { flex: 1 1 auto; min-width: 140px; }
+  .status { font-size: 0.95rem; }
+  .board { gap: 9px; padding: 12px; border-radius: 20px; }
+  .column { gap: 9px; }
+}
+
+/* Very small phones */
+@media (max-width: 360px) {
+  .controls { padding: 8px; }
+  .controls .control-row:first-child { display: grid; grid-template-columns: 1fr; }
+  .controls .control-row:first-child .btn { width: 100%; }
+  .board { gap: 8px; padding: 10px; border-radius: 18px; }
+  .column { gap: 8px; }
+  .cell { min-height: 36px; border-radius: 12px; }
+  .top-ghost-row { height: 32px; gap: 8px; }
+  .overlay-card { min-width: auto; width: 92vw; padding: 16px; }
+}
+
+/* Mobile friendliness via class toggle */
+body.is-mobile .btn { padding: 12px 16px; font-size: 1rem; }
+body.is-mobile .status { font-size: 0.95rem; }
+body.is-mobile .board, body.is-mobile .top-ghost-row { width: min(96vw, 760px); }
+body.is-mobile .credits { bottom: calc(12px + env(safe-area-inset-bottom)); }

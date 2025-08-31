@@ -26,6 +26,10 @@
   let gameOver = false;
   let busy = false; // input lock during animations / AI thinking
 
+  // Mobile detection to tweak UX
+  const isMobile = (window.matchMedia && window.matchMedia('(pointer: coarse)').matches) || /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+  if(isMobile) document.body.classList.add('is-mobile');
+
   // Cell element references [row][col]
   const cellEls = Array.from({length: ROWS}, () => Array(COLS).fill(null));
   const columnEls = []; // per-column DOM for interactions
@@ -66,6 +70,9 @@
       colEl.addEventListener('mouseleave', () => clearGhostAndTargets());
       colEl.addEventListener('click', () => handleColumnClick(c));
     }
+    // On mobile, show ghost as finger moves
+    boardEl.addEventListener('pointermove', onPointerMoveGhost, { passive: true });
+    boardEl.addEventListener('pointerleave', () => clearGhostAndTargets());
   }
 
   function buildTopGhostRow(){
@@ -157,6 +164,17 @@
   function clearGhostAndTargets(){
     for(const slot of topGhostRowEl.children) slot.innerHTML = '';
     clearTargets();
+  }
+  function onPointerMoveGhost(e){
+    if(!isMobile) return;
+    if(busy || gameOver || current !== PLAYER) return;
+    if(e.pointerType === 'mouse') return;
+    const el = document.elementFromPoint(e.clientX, e.clientY);
+    const colEl = el && el.closest ? el.closest('.column') : null;
+    if(colEl){
+      const c = parseInt(colEl.dataset.col, 10);
+      if(!Number.isNaN(c)) showGhostForColumn(c);
+    }
   }
   function clearTargets(){
     document.querySelectorAll('.cell.target').forEach(el => el.classList.remove('target'));
